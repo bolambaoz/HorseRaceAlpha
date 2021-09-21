@@ -2,6 +2,7 @@ package com.horserace
 
 import android.app.Application
 import com.horserace.data.db.AppDatabase
+import com.horserace.data.db.preferrences.PreferenceProvider
 import com.horserace.data.network.MyApi
 import com.horserace.data.network.NetworkConnectionInterceptor
 import com.horserace.data.repository.HorseRaceRepository
@@ -22,8 +23,9 @@ class AlphaMainActivity : Application(), KodeinAware {
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { MyApi( instance()) }
         bind() from singleton { AppDatabase( instance()) }
+        bind() from singleton { PreferenceProvider(instance()) }
         bind() from singleton { UserRepository( instance(), instance()) }
-        bind() from singleton { HorseRaceRepository( instance(), instance()) }
+        bind() from singleton { HorseRaceRepository( instance(), instance(), instance()) }
         bind() from provider { GalleryViewFactory( instance()) }
 //        bind() from provider { AuthViewModelFactory( instance()) }
     }

@@ -1,15 +1,13 @@
 package com.horserace.data.network
 
 import com.horserace.data.network.response.AuthResponse
+import com.horserace.data.network.response.GliveResponse
 import com.horserace.data.network.response.HorseRaceResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MyApi {
 
@@ -39,6 +37,11 @@ interface MyApi {
 
     @GET("/horse-race")
     suspend fun getAllHorseRace() : Response<HorseRaceResponse>
+
+    @GET
+    suspend fun getGliveVideo(
+        @Url url: String
+    ) : Response<GliveResponse>
 
     companion object{
         operator fun invoke(

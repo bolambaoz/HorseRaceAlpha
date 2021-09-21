@@ -6,13 +6,16 @@
         <entry key="app/src/main/res/drawable/horse_one_gradient.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/drawable/text_gradient_shade.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/activity_video_stream.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.16304347826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16304347826086957" />
+        <entry key="app/src/main/res/layout/item_horse_video.xml" value="0.22" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2265625" />
+        <entry key="app/src/main/res/layout/popup_ads_dialog.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.21197916666666666" />
       </map>
     </option>

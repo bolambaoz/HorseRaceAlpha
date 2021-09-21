@@ -11,5 +11,6 @@ data class HorseVideo(
     var id: Int? = null,
     var channel: String? = null,
     var title: String? = null,
-    var imageUrl: String? = null
+    var imageUrl: String? = null,
+    var description: String? = null
 )

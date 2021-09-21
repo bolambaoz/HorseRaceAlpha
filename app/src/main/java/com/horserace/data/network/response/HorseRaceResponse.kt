@@ -6,6 +6,6 @@ import com.horserace.data.db.entity.User
 
 data class HorseRaceResponse(
     var message: String?,
-    var isActive: String?,
+    var isActive: Boolean?,
     val video: List<HorseVideo>?
 )
