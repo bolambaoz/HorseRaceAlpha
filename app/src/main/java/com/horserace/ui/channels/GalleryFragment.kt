@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.horserace.CheckNetworkConnection
 import com.horserace.data.db.entity.HorseVideo
 import com.horserace.data.network.response.HorseRaceResponse
 import com.horserace.databinding.FragmentGalleryBinding
@@ -38,6 +40,7 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
     private var groupAdapter: GroupieAdapter? = null
     lateinit var progressVar: ProgressBar
     lateinit var fragmentRecyclerView: RecyclerView
+    lateinit var imageViewWifi: ImageView
 
     private val binding get() = _binding!!
 
@@ -58,15 +61,34 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
 
         galleryViewModel.galleryListener = this
         progressVar = binding.progressBarGallery
-        progressVar.show()
         fragmentRecyclerView = binding.galleryRecyclerView
+        imageViewWifi = binding.noConnection
+
+        progressVar.show()
 
         groupAdapter = GroupieAdapter()
 
         groupAdapter!!.setOnItemClickListener(onItemClickListener)
 
         //update the recyclerview
-        buildUI()
+//        buildUI()
+        callNetworkConnection()
+
+    }
+
+    private fun callNetworkConnection() {
+
+        val checkNetworkConnection = activity?.let { CheckNetworkConnection(it.application) }
+        checkNetworkConnection?.observe(viewLifecycleOwner, { isConnected ->
+            if(isConnected){
+                buildUI()
+                imageViewWifi.hide()
+            }else{
+                fragmentRecyclerView.hide()
+                progressVar.hide()
+                imageViewWifi.show()
+            }
+        })
     }
 
     private val onItemClickListener: OnItemClickListener =
@@ -74,23 +96,29 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
             if (item is HorseItem) {
                 val cardItem: HorseItem = item as HorseItem
                 if (!TextUtils.isEmpty(cardItem.toString())) {
-
-                    if(galleryViewModel.isActive == true) {
-                        fragmentRecyclerView.hide()
-                        progressVar.show()
-                        activity?.getIpAddres()?.let {
-                            galleryViewModel.getGliveLink(
-                                cardItem.getText().toString(),
-                                it
-                            )
-                        }
-                    }else{
-                        root_layout.snackbar("Welcome")
-                    }
+                    isClickable(cardItem)
                 }
 
             }
-        }
+    }
+
+    private fun isClickable(cardItem: HorseItem) = Coroutines.main {
+        galleryViewModel.horseIsActive.await().observe(viewLifecycleOwner, {
+            if( it == true) {
+                fragmentRecyclerView.hide()
+                progressVar.show()
+                activity?.getIpAddres()?.let {
+                    galleryViewModel.getGliveLink(
+                        cardItem.getText().toString(),
+                        it
+                    )
+                }
+            }else{
+                root_layout.snackbar("Coming soon!!!")
+            }
+
+        })
+    }
 
     private fun buildUI() = Coroutines.main {
        galleryViewModel.horseData.await().observe(viewLifecycleOwner, Observer {
@@ -98,7 +126,7 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
         })
     }
 
-    fun initRecyclerView(horseItem: List<HorseItem>) {
+    private fun initRecyclerView(horseItem: List<HorseItem>) {
         progressVar.hide()
         groupAdapter?.apply {
             addAll(horseItem)
@@ -133,6 +161,7 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
     }
 
     override fun onFailure(message: String) {
+        root_layout.snackbar(message)
         progressVar.hide()
     }
 

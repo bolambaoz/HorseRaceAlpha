@@ -8,6 +8,7 @@ import com.horserace.data.network.NetworkConnectionInterceptor
 import com.horserace.data.repository.HorseRaceRepository
 import com.horserace.data.repository.UserRepository
 import com.horserace.ui.channels.GalleryViewFactory
+import com.horserace.ui.dashboard.HomeViewFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -27,6 +28,7 @@ class AlphaMainActivity : Application(), KodeinAware {
         bind() from singleton { UserRepository( instance(), instance()) }
         bind() from singleton { HorseRaceRepository( instance(), instance(), instance()) }
         bind() from provider { GalleryViewFactory( instance()) }
+        bind() from provider { HomeViewFactory( instance()) }
 //        bind() from provider { AuthViewModelFactory( instance()) }
     }
 }

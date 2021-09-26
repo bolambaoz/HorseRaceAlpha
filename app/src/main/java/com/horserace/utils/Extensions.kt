@@ -22,6 +22,7 @@ fun Context.getIpAddres() : String{
 }
 
 fun Context.popUpAds(context: Context, url: String){
+    val horseUrl = "https://live.3wehorse.com/"
     val dialog = Dialog(
         context,
         android.R.style.Theme_Material_Light_NoActionBar_Fullscreen
@@ -41,12 +42,11 @@ fun Context.popUpAds(context: Context, url: String){
         dialog.dismiss()
     }
 
-    dialog.btn_clickhere.setOnClickListener{
-        toThreeLink(context)
-    }
+//    dialog.btn_clickhere.setOnClickListener{
+//        toThreeLink(context)
+//    }
     dialog.show()
 }
-
 
 private fun Context.toThreeLink(context: Context){
     val url = "https://asia3we.com/"
@@ -54,3 +54,6 @@ private fun Context.toThreeLink(context: Context){
     openURL.data = Uri.parse(url)
     ContextCompat.startActivity(context, openURL, null)
 }
+
+
+//        checkNetworkConnection = activity?.let { CheckNetworkConnection(it.application) }!!

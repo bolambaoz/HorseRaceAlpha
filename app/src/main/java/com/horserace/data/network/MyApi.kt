@@ -1,9 +1,11 @@
 package com.horserace.data.network
 
+import com.horserace.data.db.entity.HorseNews
 import com.horserace.data.network.response.AuthResponse
 import com.horserace.data.network.response.GliveResponse
 import com.horserace.data.network.response.HorseRaceResponse
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -37,6 +39,9 @@ interface MyApi {
 
     @GET("/horse-race")
     suspend fun getAllHorseRace() : Response<HorseRaceResponse>
+
+    @GET("/horse-news")
+    suspend fun getAllHorseNews() : Response<List<HorseNews>>
 
     @GET
     suspend fun getGliveVideo(

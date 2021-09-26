@@ -19,7 +19,9 @@
             app:contentScrim="@color/colorthemeDARKSecond"
             app:expandedTitleMarginBottom="20dp"
             app:expandedTitleMarginStart="15dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:title="@string/toolbar_collapsable"
+            >
 
             <ImageView
                 android:layout_width="match_parent"

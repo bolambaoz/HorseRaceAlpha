@@ -59,12 +59,12 @@
         app:layout_constraintTop_toBottomOf="@id/text_info" />
 
     <ImageView
-        app:layout_constraintTop_toBottomOf="@id/btn_clickhere"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:src="@drawable/banner_logo"
         android:scaleType="fitXY"
-        />
+        android:src="@drawable/banner_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_clickhere" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

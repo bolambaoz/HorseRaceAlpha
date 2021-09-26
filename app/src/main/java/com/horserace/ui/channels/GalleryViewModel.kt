@@ -13,20 +13,26 @@ import com.horserace.utils.lazyDeferred
 
 private val DEFAULT_GLIVE_LINK = "https://asia3we.com/"
 val FROM_GLIVE = "glive"
+private val _GLIVE_LINK = "https://3webasketball.com/3we-glive-api/public/latest/stream/"
+private val _GLIVE_FORMAT = "geth5link"
+
 class GalleryViewModel(
     private val repository: HorseRaceRepository
 ) : ViewModel() {
 
     var galleryListener: GalleryListener? = null
-    var message: String? = null
     var isActive = repository.getIsActive
 
     val horseData by lazyDeferred {
         repository.getHorseData()
     }
 
+    val horseIsActive by lazyDeferred {
+        repository.horseDataIsLive
+    }
+
     fun getGliveLink(channel: String, ip: String) : String{
-        val baseURL = "https://3webasketball.com/ninety-six-group-api/public/latest/stream/${channel}/${ip}/geth5link"
+        val baseURL = "${_GLIVE_LINK}${channel}/${ip}/${_GLIVE_FORMAT}"
         Coroutines.main {
             try {
                 val gliveResponse = repository.getUrlGlive(baseURL)

@@ -1,4 +1,4 @@
-package com.horserace.data.db
+package com.horserace.data.db.horse
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert

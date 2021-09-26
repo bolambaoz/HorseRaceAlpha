@@ -3,12 +3,21 @@ package com.horserace.ui.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.horserace.data.repository.HorseRaceRepository
+import com.horserace.ui.channels.*
+import com.horserace.utils.ApiException
+import com.horserace.utils.Coroutines
+import com.horserace.utils.NoInternetException
+import com.horserace.utils.lazyDeferred
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val repository: HorseRaceRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    val horseNewsData by lazyDeferred {
+        repository.getHorseNewData()
     }
-    val text: LiveData<String> = _text
+    var homeListener: HomeListener? = null
 
 }
