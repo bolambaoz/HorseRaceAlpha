@@ -5,7 +5,7 @@
     <data>
         <variable
             name="video"
-            type="com.horserace.data.db.entity.HorseVideo" />
+            type="com.horseracingtips.data.db.entity.HorseVideo" />
     </data>
     <LinearLayout
         android:orientation="vertical"

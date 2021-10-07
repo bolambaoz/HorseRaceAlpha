@@ -5,7 +5,7 @@
     <data>
         <variable
             name="news"
-            type="com.horserace.data.db.entity.HorseNews" />
+            type="com.horseracingtips.data.db.entity.HorseNews" />
     </data>
     <LinearLayout
         android:orientation="vertical"
