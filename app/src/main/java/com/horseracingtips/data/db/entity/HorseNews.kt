@@ -11,7 +11,9 @@ data class HorseNews(
     var id : String,
     var title: String? = null,
     var description: String? = null,
-    var imageUrl: String? = null
+    var imageUrl: String? = null,
+    var titleChinese: String? = null,
+    var descriptionChinese: String? = null
 )
 
 //title: req.body.title,

@@ -1,15 +1,14 @@
 package com.horseracingtips.ui.dashboard
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.horseracingtips.CheckNetworkConnection
@@ -21,8 +20,9 @@ import com.horseracingtips.utils.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import java.util.*
 
-class HomeFragment : Fragment(), HomeListener, KodeinAware{
+class HomeFragment : Fragment(), HomeListener, KodeinAware {
 
     override val kodein by kodein()
     private val factory: HomeViewFactory by instance()
@@ -33,9 +33,6 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware{
     lateinit var progressVar: ProgressBar
     lateinit var fragmentRecyclerView: RecyclerView
     lateinit var imageViewWifi: ImageView
-    lateinit var tryAgainButton: Button
-
-//    private lateinit var checkNetworkConnection: CheckNetworkConnection
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,27 +54,34 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware{
         homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
         homeViewModel.homeListener = this
-
         progressVar = binding.progressBarGallery
         imageViewWifi = binding.noConnection
         progressVar.show()
         fragmentRecyclerView = binding.homeRecyclerView
+        fragmentRecyclerView.apply {
+            layoutManager = LinearLayoutManager(
+                requireActivity(), LinearLayoutManager.VERTICAL,
+                false
+            )
+        }
 
         callNetworkConnection()
+
+        setHasOptionsMenu(true)
     }
 
 
     private fun callNetworkConnection() {
 
-        val checkNetworkConnection = activity?.let { CheckNetworkConnection(it.application) }
-
+        val checkNetworkConnection = requireActivity().let { CheckNetworkConnection(it.application) }
         checkNetworkConnection?.observe(viewLifecycleOwner, { isConnected ->
-
-            if(isConnected){
-                buildUI()
+            if (isConnected) {
+                viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                    buildUI()
+                }
                 imageViewWifi.hide()
                 fragmentRecyclerView.show()
-            }else{
+            } else {
                 fragmentRecyclerView.hide()
                 progressVar.hide()
                 imageViewWifi.show()
@@ -86,19 +90,23 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware{
     }
 
     private fun buildUI() = Coroutines.main {
-
         homeViewModel.horseNewsData.await().observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })
     }
 
-    fun initRecyclerView(horseNewsItem: List<HorseNews>) {
+    private fun initRecyclerView(horseNewsItem: List<HorseNews>) {
         progressVar.hide()
-
         fragmentRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.VERTICAL,
-                false)
-            adapter = RecyclerMutliAdapter(requireActivity(),horseNewsItem,null, RecyclerMutliAdapter.VIEW_TYPE_ONE)
+            adapter = RecyclerMutliAdapter(
+                requireActivity(),
+                horseNewsItem,
+                null,
+                RecyclerMutliAdapter.VIEW_TYPE_ONE,
+                onItemClick = {
+
+                }
+            )
 
         }
 

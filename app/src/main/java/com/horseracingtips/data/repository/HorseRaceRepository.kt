@@ -12,10 +12,11 @@ import com.horseracingtips.data.network.response.GliveResponse
 import com.horseracingtips.utils.Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
-private val MINIMUM_INTERVAL = 6
+//private val MINIMUM_INTERVAL = 6
 class HorseRaceRepository(
     private val api: MyApi,
     private val db: AppDatabase,
@@ -27,6 +28,9 @@ class HorseRaceRepository(
 
     private val horseNewsData = MutableLiveData<List<HorseNews>>()
     var getIsActive = prefs.getIsActive()
+//    var prefsLanguage = prefs.getLanguage()
+
+    private var _lang = MutableLiveData<String>()
 
     init {
         horseNewsData.observeForever{
@@ -35,16 +39,31 @@ class HorseRaceRepository(
         horseData.observeForever{
             saveHorseData(it)
         }
-
     }
 
-    private fun isFetchNeeded(savedAt: LocalDateTime): Boolean {
-        return ChronoUnit.HOURS.between(savedAt, LocalDateTime.now()) > MINIMUM_INTERVAL
+    fun setupLanguage(lang: String){
+        prefs.saveLanguage(lang)
     }
+
+    fun getLanguageNow() : LiveData<String> {
+        _lang.postValue(prefs.getLanguage().toString())
+        return  _lang
+//        _lang.postValue("en")
+//        return try {
+//            prefs.getLanguage()
+//        }catch (e : Exception) {
+//            _lang
+//        }
+    }
+
+//    private fun isFetchNeeded(savedAt: LocalDateTime): Boolean {
+//        return ChronoUnit.HOURS.between(savedAt, LocalDateTime.now()) > MINIMUM_INTERVAL
+//    }
 
     private fun saveHorseData(horseData: List<HorseVideo>){
         Coroutines.io {
-            prefs.savelastSavedAt(LocalDateTime.now().toString())
+//            prefs.savelastSavedAt(LocalDateTime.now().toString())
+            db.getHorseDao().deleteAllChannels()
             db.getHorseDao().savaAllHorseVideo(horseData)
         }
     }
@@ -57,7 +76,7 @@ class HorseRaceRepository(
     }
 
     private suspend fun fetchAllHorseData() {
-        val lastSavedAt = prefs.getLastSavedAt()
+//        val lastSavedAt = prefs.getLastSavedAt()
 //        if(lastSavedAt == null || isFetchNeeded(LocalDateTime.parse(lastSavedAt))){
             val response = apiRequest { api.getAllHorseRace() }
             prefs.saveIsActive(response.isActive!!)
@@ -84,12 +103,12 @@ class HorseRaceRepository(
         }
     }
 
-    private fun updateHorseNewsData(horseData: List<HorseNews>){
-        Coroutines.io {
-//            prefs.savelastSavedAt(LocalDateTime.now().toString())
-//            db.getHorseHewsDao().updateUsers(horseData)//(horseData)
-        }
-    }
+//    private fun updateHorseNewsData(horseData: List<HorseNews>){
+//        Coroutines.io {
+////            prefs.savelastSavedAt(LocalDateTime.now().toString())
+////            db.getHorseHewsDao().updateUsers(horseData)//(horseData)
+//        }
+//    }
 
     suspend fun getUrlGlive(url: String) : GliveResponse {
         return apiRequest {

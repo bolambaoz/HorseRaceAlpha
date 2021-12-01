@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:background="@color/background_light"
+    >
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:ignore="MissingConstraints">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment_content_main"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"

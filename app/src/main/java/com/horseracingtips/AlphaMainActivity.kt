@@ -9,6 +9,8 @@ import com.horseracingtips.data.repository.HorseRaceRepository
 import com.horseracingtips.data.repository.UserRepository
 import com.horseracingtips.ui.channels.GalleryViewFactory
 import com.horseracingtips.ui.dashboard.HomeViewFactory
+import com.horseracingtips.ui.videostream.VideoSteamViewModel
+import com.horseracingtips.ui.videostream.VideoStreamFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -27,8 +29,10 @@ class AlphaMainActivity : Application(), KodeinAware {
         bind() from singleton { PreferenceProvider(instance()) }
         bind() from singleton { UserRepository( instance(), instance()) }
         bind() from singleton { HorseRaceRepository( instance(), instance(), instance()) }
+//        bind() from provider { MainFactory( instance()) }
         bind() from provider { GalleryViewFactory( instance()) }
         bind() from provider { HomeViewFactory( instance()) }
+        bind() from provider { VideoStreamFactory( instance()) }
 //        bind() from provider { AuthViewModelFactory( instance()) }
     }
 }

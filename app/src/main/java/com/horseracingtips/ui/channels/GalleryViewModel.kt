@@ -7,10 +7,10 @@ import com.horseracingtips.utils.Coroutines
 import com.horseracingtips.utils.NoInternetException
 import com.horseracingtips.utils.lazyDeferred
 
-private val DEFAULT_GLIVE_LINK = "https://asia3we.com/"
+val DEFAULT_GLIVE_LINK = "https://asia3we.com/"
 val FROM_GLIVE = "glive"
-private val _GLIVE_LINK = "https://3webasketball.com/3we-glive-api/public/latest/stream/"
-private val _GLIVE_FORMAT = "geth5link"
+val _GLIVE_LINK = "https://3webasketball.com/3we-glive-api/public/latest/stream/"
+val _GLIVE_FORMAT = "geth5link"//"getflvlink"//
 
 class GalleryViewModel(
     private val repository: HorseRaceRepository

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
 
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {

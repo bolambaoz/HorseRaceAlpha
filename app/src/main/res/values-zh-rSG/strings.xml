@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">赛马</string>
+    <string name="action_settings">" 出口"</string>
+    <string name="toolbar_collapsable">赛马</string>
+    <string name="nav_header_desc">导航标题</string>
+    <string name="menu_home">" 今天的"</string>
+    <string name="menu_gallery">"频道 "</string>
+    <string name="menu_slideshow">即将推出</string>
+    <string name="title_activity_video_stream">视频流活动</string>
+    <string name="click_watch_listen">点击视频观看和收听</string>
+    <string name="click_here">点击这里</string>
+    <string name="translate_english">英语</string>
+    <string name="translate_chinese">中国人</string>
+    <string name="don_t_miss_the_exciting_event_this_weekend">不要错过本周末的精彩活动</string>
+    <string name="video_welcome_text">欢迎来到 3WE 赛马。请加入我们的 Telegram 群聊以获取更多提示和讨论。 (@sg3wehorse)</string>
+    <string name="fullscreen_text">我们的赛马直播视频即将推出。感谢您的理解。请随时访问我们的 FB 页面以观看赛马直播</string>
+</resources>

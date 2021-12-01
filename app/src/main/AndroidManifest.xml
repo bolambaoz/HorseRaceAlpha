@@ -32,10 +32,11 @@
 
         <activity
             android:name="com.horseracingtips.ui.videostream.VideoStreamActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="keyboardHidden|orientation"
             android:exported="true"
             android:label="@string/title_activity_video_stream"
-            android:theme="@style/Theme.HorseRace.Fullscreen" />
+            android:theme="@style/Theme.Video"
+            />
         <activity
             android:name="com.horseracingtips.MainActivity"
             android:exported="true"
@@ -49,3 +50,5 @@
     </application>
 
 </manifest>
+
+    <!--            android:configChanges="screenSize|keyboardHidden"-->

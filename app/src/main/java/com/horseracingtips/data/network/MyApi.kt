@@ -36,10 +36,10 @@ interface MyApi {
 //    @GET("users/{username}")
 //    open fun getUser(): Call<ResponseBody>
 
-    @GET("/horse-race")
+    @GET("horse-channels")
     suspend fun getAllHorseRace() : Response<HorseRaceResponse>
 
-    @GET("/horse-news")
+    @GET("horse-news")
     suspend fun getAllHorseNews() : Response<List<HorseNews>>
 
     @GET
@@ -58,7 +58,7 @@ interface MyApi {
 
             return  Retrofit.Builder()
                 .client(okkHttpclient)
-                .baseUrl("https://vlog-threewe-apinodejs.herokuapp.com/")
+                .baseUrl("https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MyApi::class.java)

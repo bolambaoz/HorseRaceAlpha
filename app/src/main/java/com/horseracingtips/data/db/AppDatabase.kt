@@ -16,23 +16,23 @@ import com.horseracingtips.data.db.user.UserDao
         User::class,
         HorseVideo::class,
         HorseNews::class],
-    version = 1
+    version = 2
 )
 
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract  fun getUserDao() : UserDao
-    abstract  fun getHorseDao() : HorseDao
-    abstract fun getHorseHewsDao() : HorseNewDao
+    abstract fun getUserDao(): UserDao
+    abstract fun getHorseDao(): HorseDao
+    abstract fun getHorseHewsDao(): HorseNewDao
 
-    companion object{
+    companion object {
 
         @Volatile
         private var instance: AppDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-            instance?:buildDatabase(context).also {
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: buildDatabase(context).also {
                 instance = it
             }
         }
@@ -42,6 +42,6 @@ abstract class AppDatabase : RoomDatabase() {
                 context.applicationContext,
                 AppDatabase::class.java,
                 "MyDatabase.db"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
     }
 }

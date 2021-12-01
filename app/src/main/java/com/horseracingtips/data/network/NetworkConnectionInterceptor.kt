@@ -16,12 +16,9 @@ class NetworkConnectionInterceptor(
     override fun intercept(chain: Interceptor.Chain): Response {
         if(!isInternetAvailable())
             throw NoInternetException("No Internet Connection")
-
         return chain.proceed(chain.request())
     }
-
     private fun isInternetAvailable() : Boolean{
-
         var result = false
         val connectivityManager = applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
         connectivityManager?.let {

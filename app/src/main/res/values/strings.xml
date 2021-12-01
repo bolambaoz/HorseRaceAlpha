@@ -9,4 +9,12 @@
     <string name="menu_gallery">Channels</string>
     <string name="menu_slideshow">Coming Soon</string>
     <string name="title_activity_video_stream">VideoStreamActivity</string>
+    <string name="click_watch_listen">Click The Video to Watch and Listen</string>
+    <string name="click_here">Click Here</string>
+    <string name="translate_english">English</string>
+    <string name="translate_chinese">Chinese</string>
+    <string name="_language" translatable="false">en</string>
+    <string name="don_t_miss_the_exciting_event_this_weekend">Don\'t miss the exciting event this weekend</string>
+    <string name="video_welcome_text">Welcome to 3WE Horse Racing. Do join our Telegram group chat for more tips and discussion. (@sg3wehorse)</string>
+    <string name="fullscreen_text">Our live streaming video for horse racing will been coming soon. thank you for your understanding. Feel free to visit our FB page for live horse racing streaming</string>
 </resources>

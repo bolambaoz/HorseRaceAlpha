@@ -11,4 +11,8 @@
     <color name="colorthemeDARKSecond">#C6000000</color>
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="black_overlay">#66000000</color>
+
+    <color name="sky_blue_light">#e3f6f5</color>
+
+    <color name="background_light">#FFF9F3</color>
 </resources>
