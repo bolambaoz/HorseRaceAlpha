@@ -44,7 +44,6 @@ class RecyclerMutliAdapter(
     private inner class GalleryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var title = view.item_horse_title
         var imageUrl = view.item_horse_image
-        var description = view.item_horse_description
         var root = view.channel_root_layout
 
     }
@@ -79,7 +78,6 @@ class RecyclerMutliAdapter(
         if (holder is GalleryViewHolder){
             holder.title.text = "${itemVideo?.title} - ${itemVideo?.channel}"
             Glide.with(context).load(itemVideo?.imageUrl).into(holder.imageUrl)
-            holder.description.text = itemVideo?.description
 
             holder.root.setOnClickListener {
                 onItemClick(itemVideo?.channel.toString())

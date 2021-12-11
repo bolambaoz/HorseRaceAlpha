@@ -1,12 +1,16 @@
 package com.horseracingtips.ui.channels
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.horseracingtips.CheckNetworkConnection
+import com.horseracingtips.R
 import com.horseracingtips.data.db.entity.HorseVideo
 import com.horseracingtips.data.network.response.HorseRaceResponse
 import com.horseracingtips.databinding.FragmentGalleryBinding
@@ -22,9 +27,11 @@ import com.horseracingtips.ui.videostream.VideoStreamActivity
 import com.horseracingtips.utils.*
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.android.synthetic.main.fragment_gallery.*
+import kotlinx.android.synthetic.main.popup_dialog.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import java.util.*
 
 
 class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
@@ -105,14 +112,9 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
                 startActivity(Intent(activity, VideoStreamActivity::class.java).apply {
                     this.putExtra("link", channel)
                 })
-//                activity?.getIpAddres()?.let {
-//                    galleryViewModel.getGliveLink(
-//                        cardItem.getText().toString(),
-//                        it
-//                    )
-//                }
             } else {
-                root_layout.snackbar("Coming soon!!!")
+                //root_layout.snackbar("Coming soon!!!")
+                popupAds(requireContext())
             }
 
         })
@@ -166,5 +168,30 @@ class GalleryFragment : Fragment(), GalleryListener, KodeinAware {
 
     override fun onLoading() {
         progressVar.show()
+    }
+
+    private fun popupAds(context: Context){
+        val url = URL_FB_HORSE
+        val openURL = Intent(Intent.ACTION_VIEW)
+        openURL.data = Uri.parse(url)
+
+        val random = Random()
+        val imgs = getResources().obtainTypedArray(R.array.pop_random_);
+
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.popup_dialog)
+        dialog.setCancelable(false)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_background)
+        dialog.background.background = ResourcesCompat.getDrawable(resources,imgs.getResourceId(0, -1),null)
+
+        dialog.img_exit.setOnClickListener{
+            dialog.dismiss()
+        }
+
+        dialog.btn_clickhere.setOnClickListener{
+            startActivity(openURL)
+        }
+
+        dialog.show();
     }
 }

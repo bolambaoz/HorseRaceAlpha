@@ -60,6 +60,10 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
             this@VideoStreamActivity.toThreeLink(this@VideoStreamActivity, URL_3WE)
         }
 
+        banner_mini.setOnClickListener {
+            this.toThreeLink(this,URL_3WE)
+        }
+
         initialLanguageSetup(this)
 
     }

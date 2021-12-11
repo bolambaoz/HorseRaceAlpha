@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:scaleType="fitXY"
-        android:src="@drawable/banner_mini"
+        android:src="@drawable/banner_tewe"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

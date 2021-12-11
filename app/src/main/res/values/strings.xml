@@ -5,6 +5,10 @@
     <string name="action_settings">Exit</string>
     <string name="toolbar_collapsable">Horse Race</string>
 
+    <integer-array name="pop_random_">
+        <item>@drawable/banner_horse</item>
+    </integer-array>
+
     <string name="menu_home">Today\'s</string>
     <string name="menu_gallery">Channels</string>
     <string name="menu_slideshow">Coming Soon</string>

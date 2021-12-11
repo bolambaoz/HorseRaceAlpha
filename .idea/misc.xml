@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/dialog_background.xml" value="0.33125" />
         <entry key="app/src/main/res/drawable/horse_one_gradient.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.24270833333333333" />
@@ -21,6 +22,7 @@
         <entry key="app/src/main/res/layout/item_horse_video.xml" value="0.335" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/popup_ads_dialog.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/popup_dialog.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/menu/main.xml" value="0.3697916666666667" />
       </map>

@@ -25,25 +25,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
+                android:background="@color/black"
                 >
 
                 <ImageView
                     android:id="@+id/item_horse_image"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
+                    android:layout_marginStart="2dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/horse_one" />
-
 
                 <LinearLayout
                     android:id="@+id/linear_left"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_alignBottom="@+id/item_horse_image"
-                    android:orientation="vertical"
-                    android:padding="8dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_toRightOf="@+id/item_horse_image"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
                     >
 
                     <TextView
@@ -54,25 +57,55 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginBottom="2dp"
                         android:text="UK how"
-                        android:lines="2"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/text_horse_item"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/item_horse_description"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignTop="@+id/linear_left"
-                        android:layout_alignParentStart="true"
-                        android:fontFamily="@font/poppins_light"
-                        android:lineSpacingMultiplier="0.8"
-                        android:text="@string/don_t_miss_the_exciting_event_this_weekend"
-                        android:textColor="#C8C8C8"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:paddingTop="8dp"
-                        />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_flag_24"
+                            android:layout_marginHorizontal="2dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="2dp"
+                            android:src="@drawable/ic_baseline_circle_24"
+
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="What live now!!"
+                            android:textColor="@color/text_horse_item"
+                            android:textSize="10sp"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="5dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        >
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/banner_tewe"
+                            android:scaleType="fitXY"
+                            />
+                    </LinearLayout>
+
                 </LinearLayout>
 
 

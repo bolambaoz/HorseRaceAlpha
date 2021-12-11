@@ -20,7 +20,9 @@
             <RelativeLayout
                 android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                >
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/container_image"
@@ -61,7 +63,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginBottom="10dp"
                         android:text="UK how"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_horse_item"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -84,7 +86,7 @@
                         android:lineSpacingMultiplier="0.9"
                         android:letterSpacing="0.05"
                         android:text="Don't miss the exciting event this weekend"
-                        android:textColor="@color/ic_launcher_background"
+                        android:textColor="@color/text_horse_item"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
