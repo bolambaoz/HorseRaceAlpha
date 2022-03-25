@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.horseracingtips">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,42 +8,73 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.horseracingtips.AlphaMainActivity"
+        android:name=".AlphaMainActivity"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HorseRace">
+        android:theme="@style/Theme.HorseRace"
+        android:usesCleartextTraffic="true">
 
         <activity
-            android:name="com.horseracingtips.SplashScreen"
+            android:name=".ui.SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait"
             android:label="@string/app_name"
-            android:theme="@style/Theme.HorseRace.NoActionBar"
-            >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HorseRace.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
-            android:name="com.horseracingtips.ui.videostream.VideoStreamActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:exported="true"
-            android:label="@string/title_activity_video_stream"
-            android:theme="@style/Theme.Video"
-            />
-        <activity
-            android:name="com.horseracingtips.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HorseRace.NoActionBar"/>
+            android:theme="@style/Theme.HorseRace.NoActionBar" />
+        <activity
+            android:name=".ui.videostream.VideoStreamActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="true"
+            android:label="@string/title_activity_video_stream"
+            android:theme="@style/Theme.Video" />
+        <activity
+            android:name=".ui.Setting"
+            android:exported="true"
+            android:label="@string/setting_act"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.About"
+            android:exported="true"
+            android:label="@string/about_act"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.Privacy"
+            android:exported="true"
+            android:label="@string/privacy_act"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.registration.RegistrationPage"
+            android:exported="true"
+            android:label="@string/register"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HorseRace.NoActionBar" />
+        <activity
+            android:name=".ui.login.LoginPage"
+            android:exported="true"
+            android:label="@string/login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HorseRace.NoActionBar" />
+
+        <activity
+            android:name=".ui.otp.OtpActivity"
+            android:exported="true"
+            android:label="@string/mobile_verification"
+            android:screenOrientation="portrait"
+            />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -50,5 +82,3 @@
     </application>
 
 </manifest>
-
-    <!--            android:configChanges="screenSize|keyboardHidden"-->

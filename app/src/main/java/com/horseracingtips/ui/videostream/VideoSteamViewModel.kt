@@ -3,9 +3,7 @@ package com.horseracingtips.ui.videostream
 import androidx.lifecycle.ViewModel
 import com.horseracingtips.data.repository.HorseRaceRepository
 import com.horseracingtips.ui.channels.*
-import com.horseracingtips.utils.ApiException
-import com.horseracingtips.utils.Coroutines
-import com.horseracingtips.utils.NoInternetException
+import com.horseracingtips.utils.*
 
 class VideoSteamViewModel(
     private val repository: HorseRaceRepository
@@ -32,8 +30,8 @@ class VideoSteamViewModel(
         }
     }
 
-    fun loadLink(){
-        vsListener?.onStarted(linkVideo, FROM_GLIVE)
-    }
+//    fun loadLink(){
+//        vsListener?.onStarted(linkVideo, FROM_GLIVE)
+//    }
 
 }

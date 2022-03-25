@@ -15,7 +15,7 @@ interface HorseDao{
     @Query("SELECT * FROM horse_race")
     fun getHorse() : LiveData<List<HorseVideo>>
 
-    @Query("DELETE FROM horse_race")
-    suspend fun deleteAllChannels()
+//    @Query("DELETE FROM horse_race")
+//    suspend fun deleteAllChannels()
 
 }

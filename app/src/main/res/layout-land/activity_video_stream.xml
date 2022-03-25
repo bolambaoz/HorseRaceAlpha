@@ -15,17 +15,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/image_header_banner"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:src="@drawable/banner_horse"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:scaleType="fitXY"-->
-<!--        />-->
+    <RelativeLayout
+        android:id="@+id/pls_login_layout"
+        android:layout_width="300dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toBottomOf="@+id/webview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/webview"
+        app:layout_constraintVertical_bias="0.70"
+        android:background="@drawable/background_round"
+        android:visibility="gone"
+        >
 
+        <Button
+            android:id="@+id/btn_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="Login" />
+        <View
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:background="@drawable/banner_daily_deposit_bonus" />
+
+        <View
+            android:id="@+id/login_background"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:background="@drawable/text_gradient_shade" />
+        <TextView
+            android:id="@+id/txt_pls_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_to_login"
+            android:layout_marginBottom="30dp"
+            android:text="Please login to watch free"
+            android:textColor="#ECECEC"
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/details_text"
@@ -105,5 +137,19 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <Button
+        android:id="@+id/btn_ads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Here"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/banner_mini"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/banner_mini"
+        app:layout_constraintTop_toTopOf="@+id/banner_mini"
+        app:layout_constraintVertical_bias="0.5"
+        android:visibility="gone"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

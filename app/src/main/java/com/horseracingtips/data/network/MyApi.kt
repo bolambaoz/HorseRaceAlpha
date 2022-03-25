@@ -1,9 +1,7 @@
 package com.horseracingtips.data.network
 
 import com.horseracingtips.data.db.entity.HorseNews
-import com.horseracingtips.data.network.response.AuthResponse
-import com.horseracingtips.data.network.response.GliveResponse
-import com.horseracingtips.data.network.response.HorseRaceResponse
+import com.horseracingtips.data.network.response.*
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -28,13 +26,6 @@ interface MyApi {
         @Field("location") location: String,
         @Field("email") email: String
     ) : Response<AuthResponse>
-//
-//    @Headers(
-//        "Content-Type: application/json",
-//        "auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTNlYmY1MjdkMWIyYWQ5MmU5MGVjOWUiLCJpYXQiOjE2MzE1MDQyMzJ9.TiMuspVVz1CwnTbx2EKTgrTiTAWXUvFGtRUF6COCeWUp"
-//    )
-//    @GET("users/{username}")
-//    open fun getUser(): Call<ResponseBody>
 
     @GET("horse-channels")
     suspend fun getAllHorseRace() : Response<HorseRaceResponse>
@@ -46,6 +37,19 @@ interface MyApi {
     suspend fun getGliveVideo(
         @Url url: String
     ) : Response<GliveResponse>
+
+
+    @GET("otp")
+    suspend fun userRegister(
+        @Query("phoneNumber") phone: String,
+        @Query("channel") channel: String
+    ) : Response<RegisterResponse>
+
+    @GET("otp/verify")
+    suspend fun userVerification(
+        @Query("code") code: String,
+        @Query("to") to: String
+    ) : Response<VerifyResponse>
 
     companion object{
         operator fun invoke(

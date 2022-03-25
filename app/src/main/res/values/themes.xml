@@ -35,11 +35,4 @@
 
     <style name="Theme.HorseRace.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.HorseRace.Fullscreen" parent="Theme.HorseRace">
-        <item name="android:actionBarStyle">@style/Widget.Theme.HorseRace.ActionBar.Fullscreen
-        </item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-    </style>
-
 </resources>

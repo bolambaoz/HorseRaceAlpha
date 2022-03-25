@@ -13,15 +13,14 @@ import com.horseracingtips.data.db.user.UserDao
 
 @Database(
     entities = [
-        User::class,
         HorseVideo::class,
         HorseNews::class],
-    version = 2
+    version = 4
 )
 
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun getUserDao(): UserDao
+//    abstract fun getUserDao(): UserDao
     abstract fun getHorseDao(): HorseDao
     abstract fun getHorseHewsDao(): HorseNewDao
 

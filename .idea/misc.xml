@@ -3,23 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_edtxt.xml" value="0.33611111111111114" />
+        <entry key="app/src/main/res/drawable/background_round.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable/dialog_background.xml" value="0.33125" />
         <entry key="app/src/main/res/drawable/horse_one_gradient.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.21574074074074073" />
+        <entry key="app/src/main/res/drawable/ic_baseline_tv_24.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/drawable/otp_background.xml" value="0.37777777777777777" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/drawable/text_gradient_shade.xml" value="0.23072916666666668" />
-        <entry key="app/src/main/res/layout-land/activity_video_stream.xml" value="0.4046875" />
+        <entry key="app/src/main/res/layout-land/activity_video_stream.xml" value="0.39253539253539255" />
+        <entry key="app/src/main/res/layout/activity_about.xml" value="0.2510131712259372" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login_page.xml" value="0.3215434083601286" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2265625" />
+        <entry key="app/src/main/res/layout/activity_otpactivity.xml" value="0.2725430597771023" />
+        <entry key="app/src/main/res/layout/activity_privacy.xml" value="0.25785207700101315" />
+        <entry key="app/src/main/res/layout/activity_registration_page.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.2510131712259372" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1717325227963526" />
-        <entry key="app/src/main/res/layout/activity_video_stream.xml" value="0.2265625" />
+        <entry key="app/src/main/res/layout/activity_video_stream.xml" value="0.335" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2265625" />
+        <entry key="app/src/main/res/layout/background_edtxt.xml" value="0.25785207700101315" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.16304347826086957" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16304347826086957" />
-        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.25227963525835867" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_horse_news.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_horse_video.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_horse_video.xml" value="0.375" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/popup_ads_dialog.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/popup_dialog.xml" value="0.19021739130434784" />

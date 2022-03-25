@@ -5,16 +5,17 @@ plugins {
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.horseracingtips"
         minSdk 26
         targetSdk 30
-        versionCode 8
-        versionName "1.8"
+        versionCode 16
+        versionName "1.14"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -22,6 +23,8 @@ android {
                 cppFlags ''
             }
         }
+        targetSdkVersion 31
+        minSdkVersion 28
     }
 
     buildTypes {
@@ -41,19 +44,45 @@ android {
         viewBinding true
         dataBinding true
     }
+
     externalNativeBuild {
         cmake {
             path file('src/main/cpp/CMakeLists.txt')
             version '3.10.2'
         }
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
 }
 
 dependencies {
 
+
+    implementation 'com.google.firebase:firebase-database:20.0.3'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
+    implementation 'androidx.webkit:webkit:1.4.0'
     def room_version = "2.3.0"
     def nav_version = "2.3.5"
     def groupie_version = "2.9.0"
+
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    implementation('androidx.browser:browser:1.3.0')
+
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
 
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'

@@ -1,9 +1,13 @@
 package com.horseracingtips.ui.adapters
 
 import android.content.Context
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.horseracingtips.ENGLISH
@@ -18,6 +22,7 @@ class RecyclerMutliAdapter(
     private val context: Context,
     private val listNews: List<HorseNews>? = null,
     private val listVideo: List<HorseVideo>? = null,
+    private val listOfTitleCH: Array<String>? = null,
     val type: Int,
     private val onItemClick: (lang: String) -> Unit,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -33,9 +38,9 @@ class RecyclerMutliAdapter(
     }
 
     private inner class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var title = view.item_horse_news_title
-        var imageUrl = view.item_horse_news_image
-        var description = view.item_hors_news_description
+        var title: TextView = view.item_horse_news_title
+        var imageUrl: ImageView = view.item_horse_news_image
+        var description: TextView = view.item_hors_news_description
         var expandbleLayout = view.expandableLayout
         var cardView = view.home_cardview
 
@@ -62,6 +67,7 @@ class RecyclerMutliAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = listNews?.get(position)
         val itemVideo = listVideo?.get(position)
+        val listOfTitle = listOfTitleCH?.get(position)
 
         if(holder is HomeViewHolder){
             holder.title.text = if (lang.toString() == ENGLISH) item?.title else item?.titleChinese
@@ -76,7 +82,8 @@ class RecyclerMutliAdapter(
         }
 
         if (holder is GalleryViewHolder){
-            holder.title.text = "${itemVideo?.title} - ${itemVideo?.channel}"
+
+            holder.title.text = if (lang.toString() == ENGLISH) "${itemVideo?.title} - ${itemVideo?.channel}" else listOfTitle.toString()
             Glide.with(context).load(itemVideo?.imageUrl).into(holder.imageUrl)
 
             holder.root.setOnClickListener {
