@@ -2,7 +2,6 @@
     <string name="app_name">HorseRace</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="action_settings">Exit</string>
     <string name="toolbar_collapsable">Horse Race</string>
 
     <integer-array name="pop_random_">
@@ -13,12 +12,52 @@
     <string name="menu_gallery">Channels</string>
     <string name="menu_slideshow">Coming Soon</string>
     <string name="title_activity_video_stream">VideoStreamActivity</string>
-    <string name="click_watch_listen">Click The Video to Watch and Listen</string>
     <string name="click_here">Click Here</string>
     <string name="translate_english">English</string>
     <string name="translate_chinese">Chinese</string>
-    <string name="_language" translatable="false">en</string>
-    <string name="don_t_miss_the_exciting_event_this_weekend">Don\'t miss the exciting event this weekend</string>
-    <string name="video_welcome_text">Welcome to 3WE Horse Racing. Do join our Telegram group chat for more tips and discussion. (@sg3wehorse)</string>
     <string name="fullscreen_text">Our live streaming video for horse racing will been coming soon. thank you for your understanding. Feel free to visit our FB page for live horse racing streaming</string>
+    <string name="watch_live_now">Watch live now!!</string>
+    <string name="get_a_chance_to_avail_our_promos_and_win_daily_click_here_to_visit_3weasia_com">Get a chance to avail our promos and win daily!!! Click here to visit 3WEasia.com!!</string>
+    <string name="login">Login</string>
+    <string name="please_login_to_watch_free">Please login to watch free</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+    <string name="username_error">Username cannot be empty</string>
+    <string name="password_error">Password cannot be empty</string>
+    <string name="phone_error">Phone number cannot be empty</string>
+    <string name="email_not_valid">Invalid email</string>
+    <string name="email_error">Email cannot be empty</string>
+    <string name="myaccount">MyAccount</string>
+    <string name="setting_act">Setting</string>
+    <string name="about_act">About</string>
+    <string name="privacy_act">Privacy</string>
+    <string name="privacy_account">Privacy</string>
+    <string name="about_account">About</string>
+    <string name="setting_account">Setting</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_out_account">Sign Out</string>
+    <string name="sign_in_account">Sign In</string>
+    <string name="about_us_text">Online Horse Racing in Singapore \n\nAre you also show a big fan of horse racing in Singapore cannot make it there? We have a great news for you. We can help you in Singapore horse racing online. We are one of the best online horse sites you will ever come across. Horse racing online has become really popular nowadays but you don\'t always find the authentic mobile application for it. With us, you need not worry about it all. Horse Racing in Singapore is really famous and is one of the most important reasons for some tourists visiting Singapore. Not everyone can afford to visit Singapore every now and then for horse racing, but this is now made possible by online horse racing mobile application Singapore. We are one of the best online horse   racing, because we\'re not only provide the real feel of the horse race but we also provide horse racing live in Singapore. We also make sure that our clients receive the horse racing card Singapore which helps them get various discounts in our Singapore horse racing portal. Today’s horse racing Singapore has become immensely popular along with the horse racing sites Singapore which has enabled players across the world to play from the comfort of their home.</string>
+    <string name="clear_cache_warning">Are you sure you want to clear cache? \n\nApplication will force close after clicking Yes</string>
+    <string name="clear_cache_title">Clear Cache</string>
+    <string name="yes_txt">Yes</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="appearance">Appearance</string>
+    <string name="version">Version</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="click_to_register_txt">"Click here to "</string>
+    <string name="register_txt_line">Register</string>
+    <string name="clear_txt">Clear</string>
+    <string name="date_account">Date</string>
+    <string name="pass_six_char_txt">Password must be more than 6 characters</string>
+    <string name="number_account_reg_txt">number</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="send">Send</string>
+    <string name="mobile_verification">Mobile Verification</string>
+    <string name="otp_not_valid">Otp not valid</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_pass_btn">Reset</string>
 </resources>

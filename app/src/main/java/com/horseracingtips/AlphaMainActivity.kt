@@ -5,11 +5,13 @@ import com.horseracingtips.data.db.AppDatabase
 import com.horseracingtips.data.db.preferrences.PreferenceProvider
 import com.horseracingtips.data.network.MyApi
 import com.horseracingtips.data.network.NetworkConnectionInterceptor
+import com.horseracingtips.data.repository.AuthRepository
 import com.horseracingtips.data.repository.HorseRaceRepository
 import com.horseracingtips.data.repository.UserRepository
 import com.horseracingtips.ui.channels.GalleryViewFactory
 import com.horseracingtips.ui.dashboard.HomeViewFactory
-import com.horseracingtips.ui.videostream.VideoSteamViewModel
+import com.horseracingtips.ui.otp.OtpFactory
+import com.horseracingtips.ui.registration.RegistrationFactory
 import com.horseracingtips.ui.videostream.VideoStreamFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -28,8 +30,11 @@ class AlphaMainActivity : Application(), KodeinAware {
         bind() from singleton { AppDatabase( instance()) }
         bind() from singleton { PreferenceProvider(instance()) }
         bind() from singleton { UserRepository( instance(), instance()) }
+        bind() from singleton { AuthRepository( instance(), instance()) }
         bind() from singleton { HorseRaceRepository( instance(), instance(), instance()) }
 //        bind() from provider { MainFactory( instance()) }
+        bind() from provider { RegistrationFactory( instance()) }
+        bind() from provider { OtpFactory( instance()) }
         bind() from provider { GalleryViewFactory( instance()) }
         bind() from provider { HomeViewFactory( instance()) }
         bind() from provider { VideoStreamFactory( instance()) }

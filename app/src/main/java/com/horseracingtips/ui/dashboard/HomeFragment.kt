@@ -1,8 +1,9 @@
 package com.horseracingtips.ui.dashboard
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
@@ -20,7 +21,7 @@ import com.horseracingtips.utils.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
-import java.util.*
+import java.lang.Exception
 
 class HomeFragment : Fragment(), HomeListener, KodeinAware {
 
@@ -65,7 +66,11 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware {
             )
         }
 
-        callNetworkConnection()
+        try {
+            callNetworkConnection()
+        }catch (e: Exception){
+            Log.d(TAG,"Error")
+        }
 
         setHasOptionsMenu(true)
     }
@@ -73,8 +78,8 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware {
 
     private fun callNetworkConnection() {
 
-        val checkNetworkConnection = requireActivity().let { CheckNetworkConnection(it.application) }
-        checkNetworkConnection?.observe(viewLifecycleOwner, { isConnected ->
+        val checkNetworkConnection = CheckNetworkConnection(requireActivity().application)
+        checkNetworkConnection?.observe(viewLifecycleOwner) { isConnected ->
             if (isConnected) {
                 viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                     buildUI()
@@ -86,13 +91,15 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware {
                 progressVar.hide()
                 imageViewWifi.show()
             }
-        })
+        }
     }
 
     private fun buildUI() = Coroutines.main {
-        homeViewModel.horseNewsData.await().observe(viewLifecycleOwner, Observer {
-            initRecyclerView(it)
-        })
+        if( view != null){
+            homeViewModel.horseNewsData.await().observe(viewLifecycleOwner, Observer {
+                initRecyclerView(it)
+            })
+        }
     }
 
     private fun initRecyclerView(horseNewsItem: List<HorseNews>) {
@@ -102,11 +109,11 @@ class HomeFragment : Fragment(), HomeListener, KodeinAware {
                 requireActivity(),
                 horseNewsItem,
                 null,
-                RecyclerMutliAdapter.VIEW_TYPE_ONE,
-                onItemClick = {
+                null,
+                RecyclerMutliAdapter.VIEW_TYPE_ONE
+            ) {
 
-                }
-            )
+            }
 
         }
 

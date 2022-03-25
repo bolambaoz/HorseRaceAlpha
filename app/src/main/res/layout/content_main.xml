@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main"
-    android:background="@color/background_light"
     >
 
     <androidx.core.widget.NestedScrollView
@@ -31,3 +30,6 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    android:background="@color/background_light"-->

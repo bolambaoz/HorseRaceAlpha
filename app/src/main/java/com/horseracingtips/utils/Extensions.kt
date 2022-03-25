@@ -1,6 +1,7 @@
 package com.horseracingtips.utils
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
@@ -8,10 +9,12 @@ import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.text.format.Formatter
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.horseracingtips.R
+import com.horseracingtips.databinding.PopupDialogBinding
 import java.util.*
 
 fun Context.snackBar(msg: String, activity: Activity, save: Boolean = true){
@@ -41,55 +44,33 @@ fun Context.changeLocale(language:String): Context {
     return createConfigurationContext(config)
 }
 
-//class ContextUtils(base: Context) : ContextWrapper(base) {
-//
-//    companion object {
-//
-//        fun updateLocale(c: Context, localeToSwitchTo: Locale): ContextWrapper {
-//            var context = c
-//            val resources: Resources = context.resources
-//            val configuration: Configuration = resources.configuration
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                val localeList = LocaleList(localeToSwitchTo)
-//                LocaleList.setDefault(localeList)
-//                configuration.setLocales(localeList)
-//            } else {
-//                configuration.locale = localeToSwitchTo
-//            }
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-//                context = context.createConfigurationContext(configuration)
-//            } else {
-//                resources.updateConfiguration(configuration, resources.displayMetrics)
-//            }
-//            return ContextUtils(context)
-//        }
-//    }
-//}
+fun Context.popUpAds(context: Context, url: String){
+    val openURL = Intent(Intent.ACTION_VIEW)
+    openURL.data = Uri.parse(URL_3WE)
 
+    val binding: PopupDialogBinding = PopupDialogBinding.inflate(
+        LayoutInflater.from(context),
+        null,
+        false
+    )
 
-//fun Context.popUpAds(context: Context, url: String){
-//    val horseUrl = "https://live.3wehorse.com/"
-//    val dialog = Dialog(
-//        context,
-//        android.R.style.Theme_Material_Light_NoActionBar_Fullscreen
-//    )
-//    dialog.setContentView(R.layout.popup_ads_dialog)
-//    dialog.setCancelable(false)
-//
-//    dialog.webview.apply {
-//        this.loadUrl(url)
-//        settings.javaScriptEnabled = true
-//    }
-//    dialog.img_exit.setOnClickListener{
-//        dialog.webview.removeAllViews()
-//        dialog.webview.destroy()
-//        dialog.webview.clearCache(true)
-//        dialog.webview.clearHistory()
-//        dialog.dismiss()
-//    }
-//
-//    dialog.show()
-//}
+    val dialog = Dialog(context)
+    dialog.setContentView(binding.root)
+    dialog.setCancelable(false)
+    dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_background)
+    binding.apply {
+
+        imgExit.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnClickhere.setOnClickListener {
+            startActivity(openURL)
+        }
+    }
+
+    dialog.show();
+}
 
 fun Context.toThreeLink(context: Context, link: String){
     val url = link

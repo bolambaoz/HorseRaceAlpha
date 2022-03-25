@@ -11,9 +11,9 @@ import com.horseracingtips.data.db.entity.User
 @Dao
 interface  UserDao{
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(user: User) : Long
-
-    @Query("SELECT * FROM user WHERE uid = $CURRENT_USER_ID")
-    fun getUser() : LiveData<User>
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun upsert(user: User) : Long
+//
+//    @Query("SELECT * FROM user WHERE uid = $CURRENT_USER_ID")
+//    fun getUser() : LiveData<User>
 }

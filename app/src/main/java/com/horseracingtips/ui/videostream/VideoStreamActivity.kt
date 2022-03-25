@@ -1,11 +1,14 @@
 package com.horseracingtips.ui.videostream
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Color.BLACK
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.webkit.WebView
@@ -14,15 +17,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import com.horseracingtips.ENGLISH
 import com.horseracingtips.LANGUAGE_KEY
+import com.horseracingtips.ui.login.LoginPage
 import com.horseracingtips.R
 import com.horseracingtips.data.network.response.HorseRaceResponse
 import com.horseracingtips.utils.*
 import kotlinx.android.synthetic.main.activity_video_stream.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
+import java.lang.Exception
 
 class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
 
@@ -35,6 +42,10 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
     private lateinit var webViewClient: WebViewClient
     private lateinit var prefs: SharedPreferences
 
+    private var clickLogin = false
+
+    private val mainScope = MainScope()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_stream)
@@ -43,6 +54,10 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
 
         val intent = intent
         val link = intent.getStringExtra("link")
+        val linkLogin = intent.getBooleanExtra("isLogin", false)
+
+        clickLogin = linkLogin
+
         videoSteamViewModel.linkVideo = link.toString()
 
         click_here_fb.setOnClickListener {
@@ -56,14 +71,19 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
 
         videoSteamViewModel.getGliveLink(this.getIpAddres())
 
-        image_banner.setOnClickListener {
-            this@VideoStreamActivity.toThreeLink(this@VideoStreamActivity, URL_3WE)
-        }
-
         banner_mini.setOnClickListener {
-            this.toThreeLink(this,URL_3WE)
+            this.toThreeLink(this, URL_BANNER_3WE)
         }
 
+        btn_to_login.setOnClickListener {
+            this.toThreeLink(this, URL_3WE)
+            isLoginPopUpRemove()
+//            startActivity(Intent(this, LoginPage::class.java).apply {
+//            })
+        }
+        btn_ads.setOnClickListener {
+            this@VideoStreamActivity.toThreeLink(this, URL_BANNER_3WE)
+        }
         initialLanguageSetup(this)
 
     }
@@ -79,7 +99,6 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(baseContext, "Landscape Mode", Toast.LENGTH_SHORT).show()
             if (Build.VERSION.SDK_INT < 16) {
-
                 window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
@@ -103,9 +122,7 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(newBase)
-        val currentLocale = newBase?.let { getLocale(it?.resources) }
-        var lang = if (!prefs.contains(LANGUAGE_KEY)) ENGLISH else prefs.getString(LANGUAGE_KEY, currentLocale.toString())
+        val lang = languageSetup(newBase)
         super.attachBaseContext(lang?.let { newBase?.changeLocale(it) })
     }
 
@@ -121,8 +138,41 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
             settings.useWideViewPort = true
             setBackgroundColor(0)
             setInitialScale(1)
+
         }
 
+        Coroutines.main {
+            startingAds()
+        }
+
+        if (!clickLogin){
+            Coroutines.main {
+                isLoginPopUp()
+            }
+        }else{
+            isLoginPopUpRemove()
+        }
+    }
+
+    private suspend fun startingAds(){
+        delay(5000)
+       try {
+           this.popUpAds(this, "")
+       }catch (e: Exception){
+           Log.d(TAG, "Activity Error")
+       }
+    }
+
+    private suspend fun isLoginPopUp(){
+        delay(10000)
+//        webview.destroy()
+        pls_login_layout.visibility = View.VISIBLE
+
+    }
+
+    private fun isLoginPopUpRemove(){
+//        webview.reload()
+        pls_login_layout.visibility = View.GONE
     }
 
     override fun onSuccess(loginResponse: HorseRaceResponse) {
@@ -133,6 +183,11 @@ class VideoStreamActivity : AppCompatActivity(),VSListener, KodeinAware {
     }
 
     override fun onLoading() {
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.cancel()
     }
 }
 

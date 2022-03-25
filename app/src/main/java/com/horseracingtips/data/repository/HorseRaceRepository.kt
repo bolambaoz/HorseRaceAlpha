@@ -48,22 +48,12 @@ class HorseRaceRepository(
     fun getLanguageNow() : LiveData<String> {
         _lang.postValue(prefs.getLanguage().toString())
         return  _lang
-//        _lang.postValue("en")
-//        return try {
-//            prefs.getLanguage()
-//        }catch (e : Exception) {
-//            _lang
-//        }
     }
-
-//    private fun isFetchNeeded(savedAt: LocalDateTime): Boolean {
-//        return ChronoUnit.HOURS.between(savedAt, LocalDateTime.now()) > MINIMUM_INTERVAL
-//    }
 
     private fun saveHorseData(horseData: List<HorseVideo>){
         Coroutines.io {
 //            prefs.savelastSavedAt(LocalDateTime.now().toString())
-            db.getHorseDao().deleteAllChannels()
+//            db.getHorseDao().deleteAllChannels()
             db.getHorseDao().savaAllHorseVideo(horseData)
         }
     }

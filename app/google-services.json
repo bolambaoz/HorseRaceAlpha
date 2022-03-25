@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "535781853160",
+    "firebase_url": "https://horsedb-68973-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "horsedb-68973",
+    "storage_bucket": "horsedb-68973.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535781853160:android:62573bae1bb1992645465d",
+        "android_client_info": {
+          "package_name": "com.horseracingtips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535781853160-64dri8j9bauf2kses8aa2b89u1q0a4j3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.horseracingtips",
+            "certificate_hash": "8d3bf289e960bdf7bb647e0fd57ff2b45dfdc42a"
+          }
+        },
+        {
+          "client_id": "535781853160-r1l92pdrhv6lb4si5obk5cp3el5a9aft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQunxnQodXtV6FOfvj3cXJTandaC9CPFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535781853160-r1l92pdrhv6lb4si5obk5cp3el5a9aft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

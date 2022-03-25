@@ -11,8 +11,8 @@
             android:id="@+id/home_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_margin="8dp"
+            android:elevation="4dp"
+            android:layout_margin="4dp"
             style="@style/Widget.MaterialComponents.CardView"
             app:rippleColor="@android:color/transparent"
             >

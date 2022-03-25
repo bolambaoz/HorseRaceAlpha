@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_horse_title_ch">
+        <item>@string/titel1</item>
+        <item>@string/titel2</item>
+        <item>@string/titel3</item>
+        <item>@string/titel4</item>
+        <item>@string/titel5</item>
+        <item>@string/titel6</item>
+        <item>@string/titel7</item>
+        <item>@string/titel8</item>
+        <item>@string/titel9</item>
+        <item>@string/titel10</item>
+        <item>@string/titel11</item>
+    </string-array>
+
+
+    <string name="titel1" translatable="false">英国 ATR</string>
+    <string name="titel2" translatable="false">英国 Racing</string>
+    <string name="titel3" translatable="false">澳门/其他</string>
+    <string name="titel4" translatable="false">澳洲 SKY2</string>
+    <string name="titel5" translatable="false">澳洲 SKY1</string>
+    <string name="titel6" translatable="false">澳洲 SKY2</string>
+    <string name="titel7" translatable="false">新加坡/香港/其他 88 中文</string>
+    <string name="titel8" translatable="false">新加坡/香港/其他 88 英文/粤语</string>
+    <string name="titel9" translatable="false">新加坡/马来西亚/其他 89</string>
+    <string name="titel10" translatable="false">新加坡/马来西亚/其他 89</string>
+    <string name="titel11" translatable="false">澳洲 SKY1</string>
+
+
+</resources>
